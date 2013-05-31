@@ -1,20 +1,24 @@
 !!! 5
 %head
-  %meta{'charset' => 'utf-8'}/
+  %meta{'charset' => 'utf-8'}
   %title=title
-  %link{'rel' => 'stylesheet', 'href' => 'http://yui.yahooapis.com/pure/0.1.0/pure-min.css'}
-  %link{'rel' => 'stylesheet', 'href' => 'assets/css/main.css'}
+  %link{'rel' => 'stylesheet', 'href' => 'assets/components/bootstrap-sass/bootstrap-2.3.2.css'}
+  %link{'rel' => 'stylesheet', 'href' => 'assets/components/bootstrap-sass/bootstrap-responsive-2.3.2.css'}
+  %link{'rel' => 'stylesheet', 'href' => 'assets/stylesheets/main.css'}
 %body
-  .content.pure-g-r
-
-    .header.pure-u-1
-      .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal
-        %a{:href=>"/", :class => 'pure-menu-heading'} Ruby Demo
-        %ul
-          %li{:class => 'pure-menu-selected'}
-            %a{:href=>"/"} Home
-          %li
-            %a{:href=>"/"} Not home
-
+  .container
+    .masthead
+      %h3{ :class => 'muted' } Ruby Demo
+      .navbar
+        .navbar-inner
+          .container
+            %ul{ :class => 'nav'}
+              %li{ :class => ('active' if request.path_info == '/') }
+                %a{ :href => '/' } Home
+              %li{ :class => ('active' if request.path_info == '/pokedex') }
+                %a{ :href => '/pokedex' } Pokedex
     = yield
+    %hr/
+    .footer
+      %p &copy; Web Dev ESGI 2013
 </html>
