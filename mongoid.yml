@@ -1,0 +1,14 @@
+development:
+  sessions:
+    default:
+      database: pokedex
+      hosts:
+        - localhost:27017
+
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %>
+      options:
+        safe: true
+        skip_version_check: true

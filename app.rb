@@ -3,8 +3,11 @@
 require 'sinatra'
 require 'sass'
 require 'haml'
+require 'mongoid'
 
 
+# MongoDB config
+Mongoid.load! './mongoid.yml'
 
 helpers do
   def sass(template, *args)
@@ -18,11 +21,9 @@ configure do
 end
 
 get '/assets/stylesheets/:name.css' do
-  logger.info 'lol'
   content_type 'text/css', :charset => 'utf-8'
   sass params[:name].to_sym
 end
-
 
 
 get '/' do
@@ -30,5 +31,14 @@ get '/' do
 end
 
 get '/pokedex' do
-  haml :'pokedex/list', :locals => {:title => 'Pokedex'}
+  pokemons = Pokemon.all.to_a
+  haml :'pokedex/list', :locals => {:title => 'Pokedex', :pokemons => pokemons}
+end
+
+class Pokemon
+  include Mongoid::Document
+  field :name,      type: String
+  field :type,      type: Array
+  field :abilities, type: Array
+  field :img,       type: String
 end

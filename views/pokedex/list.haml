@@ -1,2 +1,18 @@
 .content.pure-u-1.main
   %h1= request.path_info
+  - if pokemons.any?
+    %table{ :class => 'table' }
+      %tr
+        %th
+        %th Name
+        %th Types
+        %th Abilities
+        - pokemons.each do |pokemon|
+          %tr
+            %td
+              %img{ :src => pokemon.img, :width => 100 }
+            %td= pokemon.name
+            %td= pokemon.types.join(', ')
+            %td= pokemon.abilities.join(', ')
+  - else
+    %p No pokemon found.
