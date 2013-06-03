@@ -1,0 +1,18 @@
+%p
+  %img{ :src => pokemon.img }
+%p
+  %strong Name
+  pokemon.name
+%p
+  %strong Types
+  = pokemon.types.join(", ")
+%p
+  %strong Abilities
+  = pokemon.abilities.join(", ")
+
+%p
+  %a{ :href => "/pokedex/#{pokemon.id}/edit" }
+    Edit this Pokemon
+%p
+  %a{ :href => "/pokedex" }
+    Back to Pokedex

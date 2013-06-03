@@ -2,13 +2,14 @@
 %head
   %meta{'charset' => 'utf-8'}
   %title=title
-  %link{'rel' => 'stylesheet', 'href' => 'assets/components/bootstrap-sass/bootstrap-2.3.2.css'}
-  %link{'rel' => 'stylesheet', 'href' => 'assets/components/bootstrap-sass/bootstrap-responsive-2.3.2.css'}
-  %link{'rel' => 'stylesheet', 'href' => 'assets/stylesheets/main.css'}
+  %link{'rel' => 'stylesheet', 'href' => '/assets/components/bootstrap-sass/bootstrap-2.3.2.css'}
+  %link{'rel' => 'stylesheet', 'href' => '/assets/components/bootstrap-sass/bootstrap-responsive-2.3.2.css'}
+  %link{'rel' => 'stylesheet', 'href' => '/assets/stylesheets/main.css'}
 %body
   .container
     .masthead
-      %h3{ :class => 'muted' } Ruby Demo
+      %h3{ :class => 'muted' }
+        %a{ :href => '/' } Ruby Demo
       .navbar
         .navbar-inner
           .container

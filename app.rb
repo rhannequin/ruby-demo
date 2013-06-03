@@ -35,6 +35,16 @@ get '/pokedex' do
   haml :'pokedex/list', :locals => {:title => 'Pokedex', :pokemons => pokemons}
 end
 
+get '/pokedex/:id' do
+  pokemon_id = params[:id]
+  begin
+    pokemon = Pokemon.find(pokemon_id)
+  rescue
+    return 404
+  end
+  haml :'pokedex/show', :locals => {:title => pokemon.name, :pokemon => pokemon}
+end
+
 class Pokemon
   include Mongoid::Document
   field :name,      type: String
