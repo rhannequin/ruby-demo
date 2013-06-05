@@ -1,4 +1,8 @@
 %h1= request.path_info
+
+%p
+  %a{ :href => "/pokedex/new" } Add a Pokemon
+
 - if pokemons.any?
   %table{ :class => 'table' }
     %tr

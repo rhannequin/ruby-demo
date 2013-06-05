@@ -1,0 +1,20 @@
+%form{ :class  => "form-horizontal"}
+  .control-group
+    %label{ :class => "control-label", :for => "name" } Name
+    .controls
+      %input{ :type => "text", :id => "name", :class => "input-xxlarge", :name => "pokemon[name]", :placeholder => "" }
+  .control-group
+    %label{ :class => "control-label", :for => "types" } Types
+    .controls
+      %input{ :type => "text", :id => "types", :class => "input-xxlarge", :name => "pokemon[types]", :placeholder => "" }
+  .control-group
+    %label{ :class => "control-label", :for => "abilities" } Abilities
+    .controls
+      %input{ :type => "text", :id => "abilities", :class => "input-xxlarge", :name => "pokemon[abilities]", :placeholder => "" }
+  .control-group
+    %label{ :class => "control-label", :for => "img" } Image
+    .controls
+      %input{ :type => "text", :id => "img", :class => "input-xxlarge", :name => "pokemon[img]", :placeholder => "" }
+  .control-group
+    .controls
+      %button{ :type => "submit", :class => "btn btn-primary" } Create
