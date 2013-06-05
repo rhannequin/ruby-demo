@@ -23,6 +23,9 @@
               .btn
                 %a{ :href => "/pokedex/#{pokemon.id}" } Show
               .btn
-                %a{ :href => "/pokedex/#{pokemon.id}" } Delete
+                %a{ :href => "#", :class => "delete-pokemon", :"data-id" => pokemon.id } Delete
 - else
   %p No pokemon found.
+
+%script{ :type => "text/javascript", :src  => "/assets/components/jquery/jquery.min.js" }
+%script{ :type => "text/javascript", :src  => "/assets/javascripts/pokemons/list.js" }

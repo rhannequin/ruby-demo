@@ -3,6 +3,7 @@
 require 'sinatra'
 require 'sass'
 require 'haml'
+require 'json'
 require 'mongoid'
 
 
@@ -40,6 +41,14 @@ get '/pokedex' do
   haml :'pokedex/list', :locals => {:title => 'Pokedex', :pokemons => pokemons}
 end
 
+# List of Pokemons
+post '/pokedex' do
+  pokemon = Pokemon.new(params[:pokemon])
+  pokemon.save
+  content_type :json
+  return { :status => 'OK', :data => pokemon }.to_json
+end
+
 # Add a Pokemon
 get '/pokedex/new' do
   haml :'pokedex/new', :locals => {:title => "Add a Pokemon"}
@@ -54,6 +63,18 @@ get '/pokedex/:id' do
     return 404
   end
   haml :'pokedex/show', :locals => {:title => pokemon.name, :pokemon => pokemon}
+end
+
+delete '/pokedex/:id' do
+  pokemon_id = params[:id]
+  begin
+    content_type :json
+    pokemon = Pokemon.find(pokemon_id)
+    pokemon.delete
+    return { :status => 'OK' }.to_json
+  rescue
+    return 404
+  end
 end
 
 # Edit a Pokemon
@@ -73,7 +94,7 @@ end
 class Pokemon
   include Mongoid::Document
   field :name,      type: String
-  field :type,      type: Array
+  field :types,     type: Array
   field :abilities, type: Array
   field :img,       type: String
 end
