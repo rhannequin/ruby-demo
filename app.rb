@@ -65,6 +65,20 @@ get '/pokedex/:id' do
   haml :'pokedex/show', :locals => {:title => pokemon.name, :pokemon => pokemon}
 end
 
+# Update a Pokemon
+put '/pokedex/:id' do
+  pokemon_id = params[:id]
+  begin
+    content_type :json
+    pokemon = Pokemon.find(pokemon_id)
+    pokemon.update_attributes params[:pokemon]
+    return { :status => 'OK', :pokemon => pokemon }.to_json
+  rescue
+    return 404
+  end
+end
+
+# Remove a Pokemon
 delete '/pokedex/:id' do
   pokemon_id = params[:id]
   begin
