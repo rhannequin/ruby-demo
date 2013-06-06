@@ -17,6 +17,10 @@ Basic Ruby application with Sinatra
     $ make
     $ sudo make install
 
+### mongoDB
+
+[http://www.mongodb.org/downloads](http://www.mongodb.org/downloads)
+
 ## Installation
 
     $ git clone https://github.com/rhannequin/ruby-demo.git && cd ruby-demo
